@@ -1,0 +1,14 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./scss/bootstrap.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "prismjs/themes/prism-tomorrow.css";
+import "./scss/index.scss";
+import ScrollToTop from "./components/partials/ScrollToTop";
+import App from "./App";
+var container = document.getElementById('root');
+var root = createRoot(container);
+root.render(_jsx(React.StrictMode, { children: _jsxs(BrowserRouter, { children: [_jsx(ScrollToTop, {}), _jsx(App, {})] }) }));
