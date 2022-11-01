@@ -13,7 +13,7 @@ import NotFound from "./components/NotFound";
 import SitemapGenerator from "./components/SitemapGenerator";
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<DataService>(new DataService());
 
   useEffect(() => {
