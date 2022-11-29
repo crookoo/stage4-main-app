@@ -7,6 +7,8 @@ import Parser from './partials/Parser';
 import PaginationButton from './partials/PaginationButton';
 import MetaDecorator from './partials/MetaDecorator';
 import NotFound from './NotFound';
+import React, { Suspense } from 'react';
+const RemoteApp = React.lazy(() => import("app2/App"));
 
 export default function SinglePost(props: Props): JSX.Element {
     const { categorySlug, postSlug } = useParams();
@@ -53,6 +55,10 @@ export default function SinglePost(props: Props): JSX.Element {
                                     <PaginationButton post={nextPost} data={props.data} prev={false} />
                                 </div>
                             </div>
+                            <div>Kommentarapp {post.id}</div>
+                            <Suspense fallback={'Loading ...'}>
+                                <RemoteApp postId={post.id} />
+                            </Suspense>
                         </div>
                     </div>
                 </div>

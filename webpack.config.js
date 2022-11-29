@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
     entry: {
@@ -46,6 +47,12 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
+        new ModuleFederationPlugin({
+            name: 'app1',
+            remotes: {
+                app2: 'app2@http://localhost:3002/remoteEntry.js',
+            },
+        }),
     ],
     output: {
         path: path.resolve(__dirname, './dist'),
