@@ -8,6 +8,8 @@ import PaginationButton from './partials/PaginationButton';
 import MetaDecorator from './partials/MetaDecorator';
 import NotFound from './NotFound';
 import React, { Suspense } from 'react';
+import ErrorBoundary from './partials/ErrorBoundary';
+
 const RemoteApp = React.lazy(() => import("app2/App"));
 
 export default function SinglePost(props: Props): JSX.Element {
@@ -56,9 +58,11 @@ export default function SinglePost(props: Props): JSX.Element {
                                 </div>
                             </div>
                             <div>Kommentarapp {post.id}</div>
-                            <Suspense fallback={'Loading ...'}>
-                                <RemoteApp postId={post.id} />
-                            </Suspense>
+                            <ErrorBoundary>
+                                <Suspense fallback={'Loading ...'}>
+                                    <RemoteApp postId={post.id} />
+                                </Suspense>
+                            </ErrorBoundary>
                         </div>
                     </div>
                 </div>
