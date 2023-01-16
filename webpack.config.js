@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
+const urlRemoteGiscus = process.env.NODE_ENV === 'development' ?
+        'http://localhost:3002/' :
+        'https://crookoo.github.io/stage4-remote-giscus/';
+
 const deps = require("./package.json").dependencies;
 module.exports = {
     entry: {
@@ -49,13 +53,11 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
         new ModuleFederationPlugin({
-            name: 'app1',
             remotes: {
-                app2: 'app2@http://localhost:3002/remoteEntry.js',
+                giscusApp: `giscusRemote@${urlRemoteGiscus}remoteEntry.js`,
             },
             exposes: {},
             shared: {
-                ...deps,
                 react: {
                     singleton: true,
                     requiredVersion: deps.react,

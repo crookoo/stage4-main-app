@@ -10,7 +10,7 @@ import NotFound from './NotFound';
 import React, { Suspense } from 'react';
 import ErrorBoundary from './partials/ErrorBoundary';
 
-const RemoteApp = React.lazy(() => import("app2/App"));
+const RemoteApp = React.lazy(() => import("giscusApp/App"));
 
 export default function SinglePost(props: Props): JSX.Element {
     const { categorySlug, postSlug } = useParams();

@@ -1,6 +1,6 @@
 ///<reference types="react" />
 
-declare module "app2/App" {
+declare module "giscusApp/App" {
     const RemoteApp: React.ComponentType<IntrinsicAttributes>;
 
     export default RemoteApp;
