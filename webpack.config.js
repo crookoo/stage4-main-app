@@ -8,6 +8,7 @@ const deps = require("./package.json").dependencies;
 
 module.exports = (env) => {
     const urlRemoteGiscus = env.REMOTE_GISCUS || "http://localhost:3002/";
+    console.log(env);
 
     return {
         entry: {
