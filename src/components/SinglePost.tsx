@@ -21,6 +21,8 @@ export default function SinglePost(props: Props): JSX.Element {
         const prevPost: Post | undefined = props.data.getFromPostsViaId(post.prev);
         const nextPost: Post | undefined = props.data.getFromPostsViaId(post.next);
 
+        console.log('host app:', post.id);
+
         return (
             <div className="pb-4 single-post">
                 <MetaDecorator title={`${post.title} - ${category.name}`} description={post.excerpt} />
@@ -49,7 +51,7 @@ export default function SinglePost(props: Props): JSX.Element {
                             <div className="content mb-5">
                                 <Parser code={post.content} />
                             </div>
-                            <div className="row mb-3 gy-3">
+                            <div className="row mb-5 gy-3">
                                 <div className="col-md-6">
                                     <PaginationButton post={prevPost} data={props.data} prev={true} />
                                 </div>
@@ -57,12 +59,13 @@ export default function SinglePost(props: Props): JSX.Element {
                                     <PaginationButton post={nextPost} data={props.data} prev={false} />
                                 </div>
                             </div>
-                            <div>Kommentarapp {post.id}</div>
-                            <ErrorBoundary>
-                                <Suspense fallback={'Loading ...'}>
-                                    <RemoteApp postId={post.id} />
-                                </Suspense>
-                            </ErrorBoundary>
+                            <div className="mb-3" id="comments-wrapper-host">
+                                <ErrorBoundary>
+                                    <Suspense fallback={'Loading ...'}>
+                                        <RemoteApp postId={post.id} />
+                                    </Suspense>
+                                </ErrorBoundary>
+                            </div>
                         </div>
                     </div>
                 </div>

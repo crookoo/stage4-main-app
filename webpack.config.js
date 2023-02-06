@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
-const urlRemoteGiscus = process.env.REMOTE_GISCUS || "http://localhost:3002";
+const urlRemoteGiscus = process.env.REMOTE_GISCUS || "http://localhost:3002/";
 const deps = require("./package.json").dependencies;
 
 module.exports = {
